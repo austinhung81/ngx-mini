@@ -1,0 +1,11 @@
+<ng-container *ngIf="section">
+  <ng-container *ngFor="let example of examples">
+    <h4 [attr.id]="example.anchor">
+      {{ example.title }}
+      <a class="anchor-link" routerLink="." [fragment]="example.anchor">#</a>
+    </h4>
+    <ng-container *ngComponentOutlet="example.outlet"></ng-container>
+
+    <code-highlight *ngIf="example.source?.html" [code]="example.source.html" lang="html"></code-highlight>
+  </ng-container>
+</ng-container>

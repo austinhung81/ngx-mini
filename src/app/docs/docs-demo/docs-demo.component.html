@@ -1,0 +1,22 @@
+<app-sidenav></app-sidenav>
+<app-main>
+  <nz-anchor class="toc-wrapper">
+    <nz-link *ngFor="let section of sections" [nzHref]="'#' + section.anchor" [nzTitle]="section.title">
+      <ng-container *ngIf="section.content.length">
+        <nz-link *ngFor="let content of section.content" [nzHref]="content.anchor" [nzTitle]="content.title"></nz-link>
+      </ng-container>
+    </nz-link>
+  </nz-anchor>
+
+  <h2>{{ name }}</h2>
+  <ng-content></ng-content>
+
+  <section *ngFor="let section of sections">
+    <h3 *ngIf="section.title" [attr.id]="section.anchor">
+      {{ section.title }}
+      <a class="anchor-link" routerLink="." [fragment]="section.anchor">#</a>
+    </h3>
+
+    <ng-container *ngComponentOutlet="section.outlet; injector: sectionInjections(section)"></ng-container>
+  </section>
+</app-main>

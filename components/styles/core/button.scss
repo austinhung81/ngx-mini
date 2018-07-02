@@ -1,0 +1,383 @@
+//# Buttons
+
+#{$button} {
+  display: inline-block;
+  min-width: 80px;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 5px 12px;
+  font-size: 13px;
+  line-height: 20px;
+  border-radius: 3px;
+  user-select: none;
+
+  @include focus {
+    @include plain-active {
+      outline: none;
+    }
+  }
+
+  @include hover-focus {
+    color: #222222;
+    text-decoration: none;
+  }
+
+  @include active {
+    outline: none;
+    background-image: none;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  @include disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  @at-root a#{&} {
+    text-decoration: none;
+
+    &.disabled,
+    fieldset[disabled] & {
+      pointer-events: none;
+    }
+  }
+
+  + #{&} {
+    margin-left: 8px;
+  }
+}
+
+//## Button Types
+
+#{$button}-default {
+  color: #222222;
+  background-color: #fbfbfb;
+  background-image: linear-gradient(to bottom, #fbfbfb 0%, #ececec 100%);
+  background-repeat: repeat-x;
+  border-color: #cccccc;
+
+  @include hover {
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%);
+    background-repeat: repeat-x;
+    border-color: #999999;
+  }
+
+  @include focus {
+    color: #222222;
+    border-color: #0096cc;
+  }
+
+  @include active {
+    color: #222222;
+    background-color: #eeeeee;
+    background-image: none;
+    border-color: #bbbbbb;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  @include active {
+    @include hover-focus {
+      color: #222222;
+      border-color: #bbbbbb;
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1) inset;
+    }
+  }
+
+  @include fieldset-disabled {
+    @include hover-focus {
+      background-color: #fbfbfb;
+      background-image: linear-gradient(to bottom, #fbfbfb 0%, #ececec 100%);
+      background-repeat: repeat-x;
+      border-color: #cccccc;
+    }
+  }
+}
+
+#{$button}-primary {
+  color: #ffffff;
+  background-color: #0096cc;
+  background-image: linear-gradient(to bottom, #00a7e6 0%, #0096cc 100%);
+  background-repeat: repeat-x;
+  border-color: #0095ce;
+
+  @include hover {
+    color: #ffffff;
+    background-color: #1daee5;
+    background-image: linear-gradient(to bottom, #1daee5 0%, #00a3df 100%);
+    background-repeat: repeat-x;
+    border-color: #00759f;
+  }
+
+  @include focus {
+    color: #ffffff;
+    border-color: #444444;
+    box-shadow: 0px 0px 1px #ffffff inset;
+  }
+
+  @include active {
+    color: #ffffff;
+    background-color: #009ed8;
+    background-image: none;
+    border-color: #00759f;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.15) inset;
+  }
+
+  @include active {
+    @include hover-focus {
+      color: #ffffff;
+      border-color: #00759f;
+      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.15) inset;
+    }
+  }
+
+  @include fieldset-disabled {
+    @include hover-focus {
+      background-color: #0096cc;
+      background-image: linear-gradient(to bottom, #00a7e6 0%, #0096cc 100%);
+      background-repeat: repeat-x;
+      border-color: #0095ce;
+    }
+  }
+}
+
+#{$button}-secondary {
+  color: #222222;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+  background-repeat: repeat-x;
+  border-color: #cccccc;
+  background-color: #ffffff;
+  transition: all 0.2s linear 0s;
+  background-image: none!important;
+
+  @include hover {
+    color: #222222;
+    background-color: #f4f4f4;
+    background-image: linear-gradient(to bottom, #f4f4f4 0%, #f4f4f4 100%);
+    background-repeat: repeat-x;
+    border-color: #999999;
+  }
+
+  @include focus {
+    color: #222222;
+    border-color: #0096cc;
+  }
+
+  @include active  {
+    color: #222222;
+    background-color: #eeeeee;
+    background-image: none;
+    border-color: #bbbbbb;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  @include active {
+    @include hover-focus {
+      color: #222222;
+      border-color: #bbbbbb;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1) inset;
+    }
+  }
+
+  @include fieldset-disabled {
+    @include hover-focus {
+      background-color: #ffffff;
+      background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+      background-repeat: repeat-x;
+      border-color: #cccccc;
+    }
+  }
+}
+
+#{$button}-emphasis {
+  color: #ffffff;
+  background-color: #db3d44;
+  background-image: linear-gradient(to bottom, #e15054 0%, #db3d44 100%);
+  background-repeat: repeat-x;
+  border-color: #d8262b;
+
+  @include hover {
+    color: #ffffff;
+    background-color: #e15f5f;
+    background-image: linear-gradient(to bottom, #e15f5f 0%, #e15054 100%);
+    background-repeat: repeat-x;
+    border-color: #c22327;
+  }
+
+  @include focus {
+    color: #ffffff;
+    border-color: #444444;
+    box-shadow: 0px 0px 1px #ffffff inset;
+  }
+
+  @include active  {
+    color: #ffffff;
+    background-color: #e15054;
+    background-image: none;
+    border-color: #c22327;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.15) inset;
+  }
+
+  @include active {
+    @include hover-focus {
+      color: #ffffff;
+      border-color: #c22327;
+      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.15) inset;
+    }
+  }
+
+  @include fieldset-disabled {
+    @include hover-focus {
+      background-color: #db3d44;
+      background-image: linear-gradient(to bottom, #e15054 0%, #db3d44 100%);
+      background-repeat: repeat-x;
+      border-color: #d8262b;
+    }
+  }
+}
+
+#{$button}-link {
+  color: #0096cc;
+  font-weight: normal;
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-decoration: none;
+
+  @include plain-active {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  @include fieldset-disabled {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  @include plain-hover {
+    border-color: transparent;
+  }
+
+  @include focus {
+    border-color: transparent;
+  }
+
+  @include active {
+    border-color: transparent;
+  }
+
+  @include hover-focus {
+    color: #db3d44;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+
+  @include fieldset-disabled {
+    @include hover-focus {
+      color: #e6e6e6;
+      text-decoration: none;
+    }
+  }
+}
+
+//## Button Sizes
+
+#{$button}-lg {
+  padding: 9px 12px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 3px;
+}
+
+#{$button}-sm {
+  padding: 4px 12px;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 3px;
+}
+
+#{$button}-xs {
+  padding: 1px 12px;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 3px;
+}
+
+#{$button}-block {
+  display: block;
+  width: 100%;
+
+  @at-root {
+    input[type="submit"]#{&},
+    input[type="reset"]#{&},
+    input[type="button"]#{&} {
+      width: 100%;
+    }
+  }
+
+  + #{&} {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+}
+
+///////////////////////////////////////////
+
+.btn.btn-icon-only {
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 42px;
+}
+.btn .tmicon {
+  margin-right: 8px;
+}
+.btn-icon-only.btn .tmicon {
+  margin-right: 0;
+}
+.btn-lg.btn .tmicon,
+.btn-sm.btn .tmicon,
+.btn-xs.btn .tmicon {
+  font-size: inherit;
+  line-height: inherit;
+}
+.btn .icon {
+  width: 16px;
+  height: 16px;
+}
+.btn-lg.btn .icon {
+  width: 24px;
+  height: 24px;
+}
+.btn-sm.btn .icon,
+.btn-xs.btn .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.btn-primary .tmicon,
+.btn-primary .tmicon:hover {
+  color: #ffffff;
+}
+
+.btn-danger .tmicon,
+.btn-danger .tmicon:hover {
+  color: #ffffff;
+}
+
+.btn-lg.btn-icon-only {
+  width: 58px;
+}
+.btn-sm.btn-icon-only {
+  width: 36px;
+}
+.btn-xs.btn-icon-only {
+  width: 28px;
+}

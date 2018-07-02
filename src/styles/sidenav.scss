@@ -1,0 +1,18 @@
+
+.app-sidenav {
+  width: 240px;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+}
+
+.sidenav-menu {
+  overflow: auto;
+}
+
+.nav-pills-vertical-basic {
+  display: block;
+}

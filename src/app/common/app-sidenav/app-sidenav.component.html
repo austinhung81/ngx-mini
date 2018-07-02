@@ -1,0 +1,26 @@
+<nav class="app-sidenav" role="nav">
+  <div class="sidenav-menu">
+    <ul class="nav nav-pills nav-pills-vertical-basic">
+      <li routerLinkActive="active">
+        <a routerLink="/getting-started" role="tab">Getting started</a>
+      </li>
+    </ul>
+
+    <h4 class="sidenav-menu-group-title">Components</h4>
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control"
+          name="search"
+          placeholder="Search..."
+          [(ngModel)]="search"
+          (input)="handleSearchInput()"
+        />
+      </div>
+    </form>
+    <ul class="nav nav-pills nav-pills-vertical-basic">
+      <li *ngFor="let nav of navs" routerLinkActive="active">
+        <a [routerLink]="['/', nav.path]" role="tab">{{ nav.name }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>

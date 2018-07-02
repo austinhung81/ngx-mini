@@ -1,0 +1,46 @@
+<!-- <mini-navbar>
+	<li mini-navbar-item>
+    One
+	</li>
+	<li mini-navbar-item disabled>
+    Two
+	</li>
+</mini-navbar> -->
+
+<div class="scrollable" style="height: 300px;" #target>
+  <div style="height: 400px;">
+    <app-header title="NGX-MINI"></app-header>
+    <nz-affix [nzTarget]="target">
+      <div class="example">
+        <mini-navbar>
+          <a mini-navbar-brand href="#">
+            <span class="icon-tball-white"></span>
+          </a>
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#">Link 1</a>
+            </li>
+            <li>
+              <a href="#">Link 2</a>
+            </li>
+            <li class="dropdown">
+              <a href="#">Group 1</a>
+              <ul class="dropdown-menu">
+                <li class="active"><a href="#">Menu item one</a></li>
+                <li class="dropdown-submenu">
+                  <a href="#">Menu item two</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Second level item one</a></li>
+                    <li><a href="#">Second level item two</a></li>
+                    <li><a href="#">Second level item three</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Menu item three</a></li>
+              </ul>
+            </li>
+          </ul>
+        </mini-navbar>
+      </div>
+    </nz-affix>
+  </div>
+</div>

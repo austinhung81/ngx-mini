@@ -1,0 +1,17 @@
+
+.app-main {
+  padding: 84px 20px 20px;
+  min-height: calc(100vh - 100px);
+}
+
+docs-demo > app-main > .app-main {
+  margin-left: 240px;
+  padding-right: 240px;
+}
+
+.toc-wrapper {
+  position: fixed;
+  right: 20px;
+  top: 84px;
+  width: 200px;
+}

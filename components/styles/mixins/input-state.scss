@@ -1,0 +1,98 @@
+
+@mixin hover {
+  &:hover,
+  &.hover {
+    @content;
+  }
+}
+
+@mixin plain-hover {
+  &,
+  &:hover,
+  &.hover {
+    @content;
+  }
+}
+
+@mixin focus {
+  &:focus,
+  &.focus {
+    @content;
+  }
+}
+
+@mixin plain-focus {
+  &,
+  &:focus,
+  &.focus {
+    @content;
+  }
+}
+
+@mixin active {
+  &:active,
+  &.active {
+    @content;
+  }
+}
+
+@mixin plain-active {
+  &,
+  &:active,
+  &.active {
+    @content;
+  }
+}
+
+@mixin hover-focus {
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus {
+    @content;
+  }
+}
+
+@mixin plain-hover-focus {
+  &,
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus {
+    @content;
+  }
+}
+
+@mixin focus-active {
+  &:active,
+  &.active,
+  &:focus,
+  &.focus {
+    @content;
+  }
+}
+
+@mixin plain-focus-active {
+  &,
+  &:active,
+  &.active,
+  &:focus,
+  &.focus {
+    @content;
+  }
+}
+
+@mixin disabled {
+  &.disabled,
+  &[disabled] {
+    @content;
+  }
+}
+
+@mixin fieldset-disabled {
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    @content;
+  }
+}

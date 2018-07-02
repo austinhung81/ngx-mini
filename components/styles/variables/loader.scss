@@ -1,0 +1,21 @@
+//== Loader
+
+$loader-border-width: 2px;
+
+//** Default Loader
+$loader-default-border: rgba(0, 0, 0, 0.2);
+$loader-default-conspicuous-border: rgba(0, 0, 0, 0.8);
+
+//** Inverted Loader
+$loader-inverse-border: rgba(255, 255, 255, 0.4);
+$loader-inverse-conspicuous-border: rgba(255, 255, 255, 1);
+
+//** Loader overlay background color
+$loader-overlay-bg: rgba(255, 255, 255, .8);
+
+//** Loader sizes
+$loader-small: 16px;
+$loader-medium: 32px;
+$loader-large: 56px;
+$loader-inside-small-button: 14px;
+$loader-inside-x-small-button: 14px;

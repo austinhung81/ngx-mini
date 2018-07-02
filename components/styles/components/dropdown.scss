@@ -1,0 +1,97 @@
+
+#{$dropdown} {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#{$dropdown} #{$icon}-caret-down {
+  float: right;
+  margin-left: 2px;
+}
+
+#{$dropdown}-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  padding: 8px 0;
+  margin: 0;
+  list-style: none;
+  font-size: 13px;
+  text-align: left;
+  background-color: #ffffff;
+  border: 1px solid #bbbbbb;
+  border-radius: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+
+  > li > a {
+    display: block;
+    padding: 4px 16px;
+    clear: both;
+    font-weight: normal;
+    line-height: 20px;
+    color: #222222;
+    text-decoration: none;
+    white-space: nowrap;
+
+    @include hover-focus {
+      text-decoration: none;
+      color: #222222;
+      background-color: #eeeeee;
+    }
+  }
+}
+
+#{$dropdown}-open > #{$dropdown}-menu {
+  display: block;
+}
+
+
+///////////////////////////////////////////
+
+.dropup,
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 8px 0;
+  overflow: hidden;
+  background-color: #eeeeee;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  /*color: @dropdown-link-active-color;*/
+  text-decoration: none;
+  outline: 0;
+  /*background-color: @dropdown-link-active-bg;*/
+}
+.dropdown-menu > .disabled > a,
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  color: #bbbbbb;
+}
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  cursor: not-allowed;
+}
+.open > a {
+  outline: 0;
+}
+.dropdown-menu .badge {
+  float: right;
+  margin-left: 24px;
+  margin-top: 1px;
+}

@@ -1,0 +1,342 @@
+//
+// Typography
+// --------------------------------------------------
+
+// Fontface
+// -------------------------
+
+// Interstate-ExtraLight
+@font-face {
+  font-family: Interstate-ExtraLight;
+  font-style: normal;
+  font-weight: $headings-font-weight;
+  src: url(fonts/Interstate-ExtraLight-webfont.eot);
+  src: url(fonts/Interstate-ExtraLight-webfont.eot?#iefix) format("embedded-opentype"),
+       url(fonts/Interstate-ExtraLight-webfont.woff) format("woff"),
+       url(fonts/Interstate-ExtraLight-webfont.ttf) format("truetype"),
+       url(fonts/Interstate-ExtraLight-webfont.svg#InterstateExtraLight) format("svg");
+}
+
+// Interstate-Light
+@font-face {
+  font-family: Interstate-Light;
+  font-style: normal;
+  font-weight: $headings-font-weight;
+  src: url(fonts/Interstate-Light-webfont.eot);
+  src: url(fonts/Interstate-Light-webfont.eot?#iefix) format("embedded-opentype"),
+       url(fonts/Interstate-Light-webfont.woff) format("woff"),
+       url(fonts/Interstate-Light-webfont.ttf) format("truetype"),
+       url(fonts/Interstate-Light-webfont.svg#InterstateLight) format("svg");
+}
+
+// Headings
+// -------------------------
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  color: $headings-color;
+  small,
+  .small {
+    font-size: $small-font-size;
+    font-weight: normal;
+    line-height: $small-line-height;
+    color: $headings-small-color;
+  }
+}
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  font-family: $font-family-interstate-light;
+  line-height: $headings-line-height;
+  letter-spacing: $letter-spacing-heading-s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: $font-family-arial;
+  line-height: $line-height-base;
+}
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4 {
+  font-weight: $headings-font-weight;
+  margin-top: $font-margin;
+  margin-bottom: $font-margin;
+}
+h5, .h5,
+h6, .h6 {
+  font-weight: bold;
+}
+h1, .h1 {
+  font-size: $font-size-h1;
+}
+h2, .h2 {
+  font-size: $font-size-h2;
+}
+h3, .h3 {
+  font-size: $font-size-h3;
+}
+h4, .h4 {
+  font-size: $font-size-h4;
+}
+h5, .h5 {
+  font-size: $font-size-h5;
+  margin-top: $font-margin;
+  margin-bottom: $font-margin;
+}
+h6, .h6 {
+  font-size: $font-size-h6;
+  margin-top: ($line-height-base-computed / 2);
+  margin-bottom: ($line-height-base-computed / 2);
+}
+.title,
+.display1,
+.display2,
+.display3 {
+  font-family: $font-family-interstate-light;
+
+}
+.title {
+  font-size: $font-size-h3;
+}
+.display1 {
+  font-size: $font-size-h2;
+}
+.display2 {
+  font-size: $font-size-h1;
+}
+.display3 {
+  font-size: $font-size-display3;
+}
+.display4 {
+  font-family: $font-family-interstate-extralight;
+  font-size: $font-size-display4;
+}
+.title,
+.display1,
+.display2,
+.display3,
+.display4 {
+  color: $headings-color;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.title,
+.display1,
+.display2 {
+  letter-spacing: $letter-spacing-heading-s;
+}
+.display3,
+.display4 {
+  letter-spacing: $letter-spacing-heading-l;
+}
+
+// Body text
+// -------------------------
+.font-size-lead {
+  font-size: $font-size-lead;
+  line-height: $line-height-base;
+}
+.font-size-large {
+  font-size: $font-size-large;
+  line-height: $line-height-base;
+}
+.font-size-default {
+  font-size: $font-size-base;
+  line-height: $line-height-base-computed;
+}
+.font-size-small {
+  font-size: $font-size-small;
+  line-height: $line-height-base;
+}
+
+.lead {
+  margin-bottom: $line-height-base-computed;
+  font-size: $font-size-lead;
+  font-weight: normal;
+  line-height: $line-height-base;
+}
+
+p {
+  margin: 0 0 $paragraph-margin-bottom;
+}
+
+// Emphasis & misc
+// -------------------------
+
+// Ex: (12px small font / 13px base font)
+small,
+.small {
+  font-size: $small-font-size;
+}
+
+// Alignment
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.text-nowrap         { white-space: nowrap; }
+
+// Transformation
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
+
+// Contextual colors
+.text-default {
+  color: $text-color;
+}
+.text-muted {
+  color: $text-muted;
+}
+.text-error {
+  color: $color-brand-danger;
+}
+.text-warning {
+  color: $color-brand-warning;
+}
+.text-disabled {
+  color: $text-disabled;
+}
+.text-link {
+  color: $color-brand-primary;
+}
+
+// Lists
+// -------------------------
+
+// Unordered and Ordered lists
+ul,
+ol {
+  padding-left: $list-padding;
+  margin-top: 0;
+  margin-bottom: ($line-height-base-computed / 2);
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+// List options
+
+// Unstyled keeps list items block level, just removes default browser padding and list-style
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+  // .list-unstyled();
+  > li {
+    display: inline-block;
+    margin-left: 24px;
+    &:first-child {
+      margin-left: 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    a:hover, a:focus {
+      text-decoration: underline;
+    }
+  }
+}
+.list-inline-with-icons {
+  > li {
+    a {
+      color: $text-color;
+    }
+
+    a:hover,
+    a:focus,
+    a:hover .tmicon,
+    a:focus .tmicon {
+      color: $color-brand-primary;
+      text-decoration: none;
+    }
+  }
+}
+.list-inline-fit {
+  .btn {
+    min-width: 0;
+  }
+}
+
+// Description Lists
+dl {
+  margin-top: 0; // Remove browser default
+  margin-bottom: 0; //$line-height-base-computed;
+}
+dt,
+dd {
+  line-height: $dl-horizontal-line-height;
+}
+dd {
+  margin-left: 0; // Undo browser default
+}
+
+// Horizontal description lists
+//
+// Defaults to being stacked without any of the below styles applied, until the
+// grid breakpoint is reached (default of ~768px).
+
+.dl-horizontal {
+
+  dd {
+    // &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
+  }
+
+  dt {
+    color: $dl-horizontal-title-color;
+  }
+
+  @media (min-width: $dl-horizontal-breakpoint) {
+    dt {
+      float: left;
+      clear: left;
+      text-align: left;
+      // .text-overflow();
+    }
+    dd {}
+  }
+}
+
+// Misc
+// -------------------------
+
+// Delete
+del {
+  text-decoration: line-through;
+}
+
+// Highlight
+mark,
+.mark {
+  color: $text-color;
+  background-color: $text-mark-bg;
+}
+
+// Abbreviations and acronyms
+abbr[title],
+// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted $abbr-border-color;
+  text-decoration: none;
+}
+
+// Addresses
+address {
+  margin-bottom: $line-height-base-computed;
+  font-style: normal;
+  line-height: $line-height-base;
+}

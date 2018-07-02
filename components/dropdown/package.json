@@ -1,0 +1,25 @@
+{
+  "name": "@ngx-mini/dropdown",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sweekson/ngx-mini.git"
+  },
+  "homepage": "https://github.com/sweekson/ngx-mini/components/dropdown#readme",
+  "keywords": [
+    "angular",
+    "angular2",
+    "ng",
+    "ngx",
+    "ui",
+    "component",
+    "dropdowns"
+  ],
+  "author": "Wilson Su <sweekson@yahoo.com.tw>",
+  "private": false,
+  "peerDependencies": {
+    "@angular/common": "^6.0.5",
+    "@angular/core": "^6.0.5"
+  }
+}

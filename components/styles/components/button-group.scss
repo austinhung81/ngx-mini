@@ -1,0 +1,12 @@
+
+#{$button}-group-lg > #{$button} {
+  @extend #{$button}-lg;
+}
+
+#{$button}-group-sm > #{$button} {
+  @extend #{$button}-sm;
+}
+
+#{$button}-group-xs > #{$button} {
+  @extend #{$button}-xs;
+}

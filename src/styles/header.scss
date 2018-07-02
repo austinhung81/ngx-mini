@@ -1,0 +1,23 @@
+
+app-root > app-header > .app-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.app-header {
+  background-color: $bg-1st;
+  border-bottom: 1px solid $border-2nd;
+  height: 64px;
+}
+
+.app-heading {
+  display: inline-block;
+  color: $color-1st;
+  font-size: 26px;
+  line-height: 26px;
+  margin: 0;
+  padding: 19px 12px;
+}

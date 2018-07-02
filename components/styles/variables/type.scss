@@ -1,0 +1,90 @@
+//== Typography
+//
+
+//## Font, line-height, and color for body text, headings, and more.
+$font-family-arial: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif: Georgia, "Times New Roman", Times, serif;
+$font-family-interstate-light: Interstate-Light, Arial, "Helvetica Neue", Helvetica, font-family-sans-serif;
+$font-family-interstate-extralight: Interstate-ExtraLight, Arial, "Helvetica Neue", Helvetica, font-family-sans-serif;
+
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`
+$font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+$font-family-base: $font-family-arial;
+
+//** Size
+$font-size-lead: 16px;
+$font-size-large: 14px;
+$font-size-base: 13px;
+$font-size-small: 12px;
+
+//** Displays
+$font-size-display4: 40px;
+$font-size-display3: 32px;
+$font-size-display2: 26px;
+$font-size-display1: 24px;
+
+//** Title
+$font-size-title: 18px;
+
+//** Headings
+$font-size-h1: 26px;
+$font-size-h2: 24px;
+$font-size-h3: 18px;
+$font-size-h4: 16px;
+$font-size-h5: 14px;
+$font-size-h6: 13px;
+
+//** Font margin
+$font-margin: 12px;
+
+//** Letter spacing
+$letter-spacing-heading-l: -0.03em;
+$letter-spacing-heading-s: -0.02em;
+
+//** Unit-less `line-height` for use in components like buttons.
+$line-height-base: 1.5;
+
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+$line-height-lead-computed: ceil(($font-size-lead * $line-height-base));    // ~24px
+$line-height-large-computed: ceil(($font-size-large * $line-height-base));   // ~21px
+$line-height-base-computed: ceil(($font-size-base * $line-height-base));    // ~20px
+$line-height-small-computed: ceil(($font-size-small * $line-height-base));   // ~18px
+
+$paragraph-margin-bottom: $font-margin;
+
+//** Headings
+$headings-font-weight: 200;
+$headings-line-height: 1.2;
+$headings-color: $text-color;
+
+//** Headings small color
+$headings-small-color: #666;
+
+//** Small font
+$small-font-size: 70%;
+$small-line-height: 1;
+
+//** Text muted color
+$text-muted: #888888;
+$text-disabled: #aaaaaa;
+
+//** Abbreviations and acronyms border color
+$abbr-border-color: $color-brand-primary;
+
+//** Mark
+$text-mark-bg: #fdf0c3;
+
+//** Lists (Unordered and Ordered lists)
+$list-padding: 24px;
+
+//** Horizontal offset for forms and lists.
+$component-offset-horizontal: 180px;
+
+//** Width of horizontal description list titles
+$dl-horizontal-title-color: $text-color-3rd;
+$dl-horizontal-line-height: 24px;
+$dl-horizontal-offset: $component-offset-horizontal;
+//** Point at which .dl-horizontal becomes horizontal
+$dl-horizontal-breakpoint: $grid-float-breakpoint;

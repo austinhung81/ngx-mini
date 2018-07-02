@@ -1,0 +1,6 @@
+<button nm-btn surface="primary" type="button" [disabled]="spinning">
+  <span nm-loader size="sm" [spinning]="spinning" example></span>
+  <span *ngIf="!spinning">Save</span>
+  <span *ngIf="spinning">Saving</span>
+</button>
+<nz-switch [(ngModel)]="spinning"></nz-switch>
