@@ -127,25 +127,6 @@
         }
       }
     },
-    "@ngx-mini/host": {
-      "root": "components/host",
-      "sourceRoot": "components/host/src",
-      "projectType": "library",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "project": "components/host/ng-package.json",
-            "tsConfig": "components/tsconfig.lib.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "components/host/ng-package.prod.json"
-            }
-          }
-        }
-      }
-    },
     "@ngx-mini/button": {
       "root": "components/button",
       "sourceRoot": "components/button/src",

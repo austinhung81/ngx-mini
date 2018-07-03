@@ -5,8 +5,10 @@ import { HtmlParser } from '../../docs/models/html-parser';
 import { ComponentExamplesComponent } from '../../docs/component-examples/component-examples.component';
 
 import { DemoDropdownBasicComponent } from './demo/basic/basic.component';
+import { DemoDropdownTriggerComponent } from './demo/trigger/trigger.component';
 
 import demoBasicHtml from './demo/basic/basic.component.html';
+import demoTriggerHtml from './demo/trigger/trigger.component.html';
 
 @Component({
   selector: 'demo-dropdown',
@@ -22,11 +24,19 @@ export class DemoDropdownComponent {
       outlet: ComponentExamplesComponent,
       content: [
         {
-          title: 'Basic Dropdown',
+          title: 'Basic',
           anchor: 'basic',
           outlet: DemoDropdownBasicComponent,
           source: {
             html: new HtmlParser(demoBasicHtml).extract('[example]', false)
+          }
+        },
+        {
+          title: 'Trigger',
+          anchor: 'trigger',
+          outlet: DemoDropdownTriggerComponent,
+          source: {
+            html: new HtmlParser(demoTriggerHtml).extract('[example]', false)
           }
         }
       ]

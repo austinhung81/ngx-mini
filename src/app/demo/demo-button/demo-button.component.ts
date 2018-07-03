@@ -24,7 +24,7 @@ export class DemoButtonComponent {
       outlet: ComponentExamplesComponent,
       content: [
         {
-          title: 'Button Type',
+          title: 'Type',
           anchor: 'size',
           outlet: DemoButtonTypeComponent,
           source: {
@@ -32,7 +32,7 @@ export class DemoButtonComponent {
           }
         },
         {
-          title: 'Button Size',
+          title: 'Size',
           anchor: 'size',
           outlet: DemoButtonSizeComponent,
           source: {

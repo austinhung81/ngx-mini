@@ -2,39 +2,39 @@ import {
   Directive,
   OnInit,
   OnChanges,
-  HostListener,
   ElementRef,
-  Renderer2
+  Renderer2,
+  HostListener
 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
+import { NmMenuItemDirective } from './menu-item.directive';
+
 @Directive({
-  selector: '[nm-dropdown-toggle]'
+  selector: '[nm-menu]'
 })
-export class NmDropdownToggleDirective implements OnInit, OnChanges {
+export class NmMenuDirective implements OnInit, OnChanges {
   private mouseenter = new Subject<MouseEvent>();
   private mouseleave = new Subject<MouseEvent>();
-  private click = new Subject<MouseEvent>();
-  private active = new Subject<KeyboardEvent>();
+  private click = new Subject<NmMenuItemDirective>();
 
   mouseenter$: Observable<MouseEvent> = this.mouseenter.asObservable();
   mouseleave$: Observable<MouseEvent> = this.mouseleave.asObservable();
-  click$: Observable<MouseEvent> = this.click.asObservable();
-  active$: Observable<KeyboardEvent> = this.active.asObservable();
+  click$: Observable<NmMenuItemDirective> = this.click.asObservable();
 
   private classes: { [name: string]: boolean } = {};
+
+  readonly items: NmMenuItemDirective[] = [];
 
   constructor(private elem: ElementRef, private renderer: Renderer2) {
   }
 
-  ngOnInit() {
-    this.setCurrentClasses();
-    this.applyCurrentClasses();
+  addItem(item: NmMenuItemDirective) {
+    this.items.push(item);
   }
 
-  ngOnChanges(): void {
-    this.setCurrentClasses();
-    this.applyCurrentClasses();
+  onClickItem(item: NmMenuItemDirective) {
+    this.click.next(item);
   }
 
   @HostListener('mouseenter', ['$event'])
@@ -47,20 +47,19 @@ export class NmDropdownToggleDirective implements OnInit, OnChanges {
     this.mouseleave.next(e);
   }
 
-  @HostListener('click', ['$event'])
-  onClick(e: MouseEvent): void {
-    this.click.next(e);
+  ngOnInit() {
+    this.setCurrentClasses();
+    this.applyCurrentClasses();
   }
 
-  @HostListener('keyup.enter', ['$event'])
-  @HostListener('keyup.space', ['$event'])
-  onActive(e: KeyboardEvent): void {
-    this.active.next(e);
+  ngOnChanges(): void {
+    this.setCurrentClasses();
+    this.applyCurrentClasses();
   }
 
   private setCurrentClasses(): void {
     this.classes = {
-      'nm-dropdonw-toggle': true
+      'nm-menu': true
     };
   }
 

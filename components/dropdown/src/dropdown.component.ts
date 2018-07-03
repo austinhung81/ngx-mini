@@ -9,14 +9,16 @@ import {
   ElementRef,
   Renderer2,
   EventEmitter,
-  ContentChild
+  ContentChild,
+  HostListener
 } from '@angular/core';
 
 import { Observable, Subject, merge } from 'rxjs';
-import { mapTo, takeUntil, debounceTime } from 'rxjs/operators';
+import { map, mapTo, takeUntil, debounceTime } from 'rxjs/operators';
 
 import { DropdownConfig } from './dropdown.config';
 import { NmDropdownToggleDirective } from './dropdown-toggle.directive';
+import { NmMenuDirective } from './menu.directive';
 
 @Component({
   selector: 'nm-dropdown',
@@ -44,15 +46,69 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
   @Input() closeOnClick = true;
 
   /** Emits an event when open change */
-  @Output() isOpenChange = new EventEmitter<boolean>();
+  @Output() openChange = new EventEmitter<boolean>();
 
   @ContentChild(NmDropdownToggleDirective) toggle: NmDropdownToggleDirective;
+  @ContentChild(NmMenuDirective) menu: NmMenuDirective;
 
   private classes: { [name: string]: boolean } = {};
+  private open$ = new Subject<boolean>();
   private unsubscribe$ = new Subject<void>();
 
   constructor(private elem: ElementRef, private renderer: Renderer2, config: DropdownConfig) {
     Object.assign(this, config);
+  }
+
+  show() {
+    this.open$.next(true);
+  }
+
+  hide() {
+    this.open$.next(false);
+  }
+
+  listenOpenChange() {
+    let toggle$: Observable<boolean>;
+    let menu$: Observable<boolean>;
+
+    if (this.trigger === 'click') {
+      toggle$ = merge(
+        this.toggle.click$.pipe(map(_ => !this.open)),
+        this.toggle.active$.pipe(map(_ => !this.open))
+      );
+
+      menu$ = this.menu.click$.pipe(mapTo(false));
+    }
+
+    if (this.trigger === 'hover') {
+      toggle$ = merge(
+        this.toggle.mouseenter$.pipe(mapTo(true)),
+        this.toggle.mouseenter$.pipe(mapTo(true)),
+        this.toggle.active$.pipe(map(_ => !this.open))
+      );
+
+      menu$ = merge(
+        this.menu.mouseenter$.pipe(mapTo(true)),
+        this.menu.mouseleave$.pipe(mapTo(false)),
+        this.menu.click$.pipe(mapTo(false))
+      );
+    }
+
+    merge(toggle$, menu$).pipe(debounceTime(100), takeUntil(this.unsubscribe$)).subscribe(this.onOpenChange);
+  }
+
+  onOpenChange = (open: boolean) => {
+    this.open = open;
+    this.openChange.emit(open);
+    this.setCurrentClasses();
+    this.applyCurrentClasses();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(e: MouseEvent): void {
+    if (!this.elem.nativeElement.contains(event.target)) {
+      this.onOpenChange(false);
+    }
   }
 
   ngOnInit() {
@@ -66,32 +122,12 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
   }
 
   ngAfterContentInit(): void {
-    let mouse$: Observable<boolean>;
-
-    if (this.trigger === 'click') {
-      mouse$ = this.toggle.click$.pipe(mapTo(true));
-    }
-
-    if (this.trigger === 'hover') {
-      mouse$ = merge(
-        this.toggle.mouseenter$.pipe(mapTo(true)),
-        this.toggle.mouseleave$.pipe(mapTo(false), debounceTime(100))
-      );
-    }
-
-    mouse$.pipe(takeUntil(this.unsubscribe$)).subscribe(this.onOpenChange);
+    this.listenOpenChange();
   }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
-
-  onOpenChange = (open: boolean) => {
-    this.open = open;
-    this.isOpenChange.emit(open);
-    this.setCurrentClasses();
-    this.applyCurrentClasses();
   }
 
   private setCurrentClasses(): void {

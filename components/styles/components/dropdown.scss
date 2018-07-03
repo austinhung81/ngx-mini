@@ -10,7 +10,7 @@
   margin-left: 2px;
 }
 
-#{$dropdown}-menu {
+#{$menu} {
   position: absolute;
   top: 100%;
   left: 0;
@@ -27,29 +27,59 @@
   border-radius: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   background-clip: padding-box;
+}
 
-  > li > a {
-    display: block;
-    padding: 4px 16px;
-    clear: both;
-    font-weight: normal;
-    line-height: 20px;
-    color: #222222;
+#{$menu}-item {
+  cursor: pointer;
+  display: block;
+  padding: 4px 16px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: #222222;
+  text-decoration: none;
+  white-space: nowrap;
+
+  @include hover-focus {
     text-decoration: none;
-    white-space: nowrap;
-
-    @include hover-focus {
-      text-decoration: none;
-      color: #222222;
-      background-color: #eeeeee;
-    }
+    color: #222222;
+    background-color: #eeeeee;
   }
 }
 
-#{$dropdown}-open > #{$dropdown}-menu {
+#{$menu}-item-disabled {
+  @include plain-hover {
+
+  }
+}
+
+#{$menu}-divider {
+  background-color: #eeeeee;
+  height: 1px;
+  line-height: 0;
+  margin: 8px 0;
+  overflow: hidden;
+}
+
+#{$dropdown}-open > #{$menu} {
   display: block;
 }
 
+//## Button Pane
+
+#{$button}-pane {
+  &-left > #{$dropdown} {
+    @extend %gap-right-md;
+  }
+
+  &-right > #{$dropdown} {
+    @extend %gap-left-md;
+  }
+
+  &-multiline > #{$dropdown} {
+    @extend %gap-bottom-md;
+  }
+}
 
 ///////////////////////////////////////////
 
@@ -57,16 +87,9 @@
 .dropdown {
   position: relative;
 }
-
 .dropdown-menu.pull-right {
   right: 0;
   left: auto;
-}
-.dropdown-menu .divider {
-  height: 1px;
-  margin: 8px 0;
-  overflow: hidden;
-  background-color: #eeeeee;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -86,9 +109,6 @@
   text-decoration: none;
   background-color: transparent;
   cursor: not-allowed;
-}
-.open > a {
-  outline: 0;
 }
 .dropdown-menu .badge {
   float: right;

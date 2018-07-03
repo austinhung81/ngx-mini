@@ -28,7 +28,7 @@ export class DemoLoaderComponent {
       outlet: ComponentExamplesComponent,
       content: [
         {
-          title: 'Loader Size',
+          title: 'Size',
           anchor: 'size',
           outlet: DemoLoaderSizeComponent,
           source: {
@@ -52,8 +52,8 @@ export class DemoLoaderComponent {
           }
         },
         {
-          title: 'Loader Overlay',
-          anchor: 'loader-overlay',
+          title: 'Overlay',
+          anchor: 'overlay',
           outlet: DemoLoaderOverlayComponent,
           source: {
             html: new HtmlParser(demoOverlayHtml).extract('[example]', true)

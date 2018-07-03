@@ -19,6 +19,12 @@
     "paths": {
       "@ngx-mini/*": [
         "dist/@ngx-mini/*"
+      ],
+      "tvmaze": [
+        "dist/tvmaze"
+      ],
+      "tvmaze/*": [
+        "dist/tvmaze/*"
       ]
     }
   }
