@@ -1,3 +1,4 @@
+//# Dropdown
 
 #{$dropdown} {
   position: relative;
@@ -5,10 +6,57 @@
   vertical-align: middle;
 }
 
-#{$dropdown} #{$icon}-caret-down {
-  float: right;
-  margin-left: 2px;
+#{$dropdown} {
+  #{$icon}-caret-down,
+  #{$icon}-caret-up {
+    float: right;
+    margin-left: 2px;
+  }
+
+  #{$icon}:not(#{$icon}-caret-down):not(#{$icon}-caret-up) {
+    @extend %gap-right-md;
+  }
 }
+
+#{$button}-primary,
+#{$button}-emphasis {
+  #{$icon}-caret-down,
+  #{$icon}-caret-up {
+    color: #fff;
+  }
+}
+
+//## Dropdown Toggle
+
+#{$button}#{$dropdown}-toggle {
+  text-align: left;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+#{$dropdown}-open #{$dropdown}-toggle {
+  @each $surface in (default, primary, secondary, emphasis, link) {
+    &#{$button}-#{$surface} {
+      @extend #{$button}-#{$surface}.active;
+    }
+  }
+}
+
+#{$dropdown}-toggle#{$button}-link {
+  color: #222222;
+  padding-left: 0;
+  padding-right: 0;
+  text-decoration: none;
+
+  @include hover {
+    &,
+    #{$icon} {
+      color: #0096cc;
+    }
+  }
+}
+
+//## Menu
 
 #{$menu} {
   position: absolute;
@@ -29,7 +77,7 @@
   background-clip: padding-box;
 }
 
-#{$menu}-item {
+#{$menu}-item > a {
   cursor: pointer;
   display: block;
   padding: 4px 16px;
@@ -45,11 +93,21 @@
     color: #222222;
     background-color: #eeeeee;
   }
+
+  > #{$icon} {
+    @extend %gap-right-md;
+  }
 }
 
-#{$menu}-item-disabled {
-  @include plain-hover {
+#{$menu}-item.disabled > a {
+  @include plain-hover-focus {
+    color: #bbbbbb;
+  }
 
+  @include hover-focus {
+    background-color: transparent;
+    cursor: not-allowed;
+    text-decoration: none;
   }
 }
 
@@ -83,8 +141,7 @@
 
 ///////////////////////////////////////////
 
-.dropup,
-.dropdown {
+.dropup {
   position: relative;
 }
 .dropdown-menu.pull-right {
@@ -99,19 +156,12 @@
   outline: 0;
   /*background-color: @dropdown-link-active-bg;*/
 }
-.dropdown-menu > .disabled > a,
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus {
-  color: #bbbbbb;
-}
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus {
-  text-decoration: none;
-  background-color: transparent;
-  cursor: not-allowed;
-}
 .dropdown-menu .badge {
   float: right;
   margin-left: 24px;
   margin-top: 1px;
+}
+
+.dropdown-toggle.btn-icon-only {
+  text-align: center;
 }

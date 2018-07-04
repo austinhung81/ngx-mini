@@ -1,6 +1,6 @@
 
 @each $position in (top, right, bottom, left) {
-  @each $size, $pixel in (sm: 4px, md: 8px, lg: 12px) {
+  @each $size, $pixel in (xs:2px, sm: 4px, md: 8px, lg: 12px) {
     %gap-#{$position}-#{$size} {
       margin-#{$position}: $pixel;
     }

@@ -1,27 +1,46 @@
 import {
-  Directive,
+  Component,
   Host,
   Input,
   OnInit,
   OnChanges,
   HostListener,
   ElementRef,
-  Renderer2
+  Renderer2,
+  ViewChild
 } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 import { NmMenuDirective } from './menu.directive';
 
-@Directive({
-  selector: '[nm-menu-item]'
+@Component({
+  selector: '[nm-menu-item]',
+  templateUrl: './menu-item.component.html'
 })
-export class NmMenuItemDirective implements OnInit, OnChanges {
+export class NmMenuItemComponent implements OnInit, OnChanges {
+  @Input() active: boolean;
   @Input() selected: boolean;
   @Input() disabled: boolean;
+
+  @ViewChild('link') link: ElementRef;
 
   private classes: { [name: string]: boolean } = {};
 
   constructor(private elem: ElementRef, private renderer: Renderer2, @Host() private menu: NmMenuDirective) {
     this.menu.addItem(this);
+  }
+
+  activate() {
+    this.active = true;
+    this.setCurrentClasses();
+    this.applyCurrentClasses();
+    this.link.nativeElement.focus();
+  }
+
+  inactivate() {
+    this.active = false;
+    this.setCurrentClasses();
+    this.applyCurrentClasses();
   }
 
   @HostListener('click', ['$event'])
@@ -49,8 +68,9 @@ export class NmMenuItemDirective implements OnInit, OnChanges {
   private setCurrentClasses(): void {
     this.classes = {
       'nm-menu-item': true,
-      'nm-menu-item-selected': this.selected,
-      'nm-menu-item-disabled': this.disabled
+      'active': this.active,
+      'nm-menu-selected': this.selected,
+      'disabled': this.disabled
     };
   }
 

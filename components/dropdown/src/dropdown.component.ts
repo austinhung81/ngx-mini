@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 
 import { Observable, Subject, merge } from 'rxjs';
-import { map, mapTo, takeUntil, debounceTime } from 'rxjs/operators';
+import { map, mapTo, takeUntil, debounceTime, filter, tap } from 'rxjs/operators';
 
 import { DropdownConfig } from './dropdown.config';
 import { NmDropdownToggleDirective } from './dropdown-toggle.directive';
@@ -67,6 +67,18 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
     this.open$.next(false);
   }
 
+  listenArrowKeydown() {
+    const preventDefault = e => e.preventDefault();
+    const arrows$: Observable<number> = merge(
+      this.toggle.arrowup$.pipe(tap(preventDefault), mapTo(-1)),
+      this.toggle.arrowdown$.pipe(tap(preventDefault), mapTo(1)),
+      this.menu.arrowup$.pipe(tap(preventDefault), mapTo(-1)),
+      this.menu.arrowdown$.pipe(tap(preventDefault), mapTo(1))
+    );
+
+    arrows$.pipe(takeUntil(this.unsubscribe$)).subscribe(this.onArrowsKeyup);
+  }
+
   listenOpenChange() {
     let toggle$: Observable<boolean>;
     let menu$: Observable<boolean>;
@@ -74,27 +86,35 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
     if (this.trigger === 'click') {
       toggle$ = merge(
         this.toggle.click$.pipe(map(_ => !this.open)),
-        this.toggle.active$.pipe(map(_ => !this.open))
+        this.toggle.escape$.pipe(mapTo(false))
       );
 
-      menu$ = this.menu.click$.pipe(mapTo(false));
+      menu$ = this.menu.click$.pipe(map(_ => !this.closeOnClick));
     }
 
     if (this.trigger === 'hover') {
       toggle$ = merge(
+        this.toggle.click$.pipe(map(_ => !this.open)),
         this.toggle.mouseenter$.pipe(mapTo(true)),
-        this.toggle.mouseenter$.pipe(mapTo(true)),
-        this.toggle.active$.pipe(map(_ => !this.open))
+        this.toggle.mouseleave$.pipe(mapTo(false))
       );
 
       menu$ = merge(
         this.menu.mouseenter$.pipe(mapTo(true)),
         this.menu.mouseleave$.pipe(mapTo(false)),
-        this.menu.click$.pipe(mapTo(false))
+        this.menu.click$.pipe(map(_ => !this.closeOnClick))
       );
     }
 
     merge(toggle$, menu$).pipe(debounceTime(100), takeUntil(this.unsubscribe$)).subscribe(this.onOpenChange);
+  }
+
+  listenOpen() {
+    this.openChange.pipe(filter(v => v)).subscribe(this.onOpen);
+  }
+
+  onArrowsKeyup = (seed: number) => {
+    this.menu.activateItem(seed);
   }
 
   onOpenChange = (open: boolean) => {
@@ -104,9 +124,13 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
     this.applyCurrentClasses();
   }
 
+  onOpen = () => {
+    this.menu.resetCurrentActiveItemIndex();
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(e: MouseEvent): void {
-    if (!this.elem.nativeElement.contains(event.target)) {
+    if (!this.elem.nativeElement.contains(e.target) && this.closeOnClick) {
       this.onOpenChange(false);
     }
   }
@@ -114,20 +138,28 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
   ngOnInit() {
     this.setCurrentClasses();
     this.applyCurrentClasses();
+    this.applyToggleDisabledAttr();
   }
 
   ngOnChanges(): void {
     this.setCurrentClasses();
     this.applyCurrentClasses();
+    this.applyToggleDisabledAttr();
   }
 
   ngAfterContentInit(): void {
     this.listenOpenChange();
+    this.listenOpen();
+    this.listenArrowKeydown();
   }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  private applyToggleDisabledAttr() {
+    this.toggle.disable(this.disabled);
   }
 
   private setCurrentClasses(): void {

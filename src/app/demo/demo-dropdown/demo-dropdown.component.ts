@@ -6,9 +6,11 @@ import { ComponentExamplesComponent } from '../../docs/component-examples/compon
 
 import { DemoDropdownBasicComponent } from './demo/basic/basic.component';
 import { DemoDropdownTriggerComponent } from './demo/trigger/trigger.component';
+import { DemoDropdownDisabledComponent } from './demo/disabled/disabled.component';
 
 import demoBasicHtml from './demo/basic/basic.component.html';
 import demoTriggerHtml from './demo/trigger/trigger.component.html';
+import demoDisabledHtml from './demo/disabled/disabled.component.html';
 
 @Component({
   selector: 'demo-dropdown',
@@ -37,6 +39,14 @@ export class DemoDropdownComponent {
           outlet: DemoDropdownTriggerComponent,
           source: {
             html: new HtmlParser(demoTriggerHtml).extract('[example]', false)
+          }
+        },
+        {
+          title: 'Disabled',
+          anchor: 'disabled',
+          outlet: DemoDropdownDisabledComponent,
+          source: {
+            html: new HtmlParser(demoDisabledHtml).extract('[example]', false)
           }
         }
       ]

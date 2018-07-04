@@ -3,3 +3,12 @@
   display: block;
   margin: 20px 0;
 }
+
+figure {
+  max-height: 300px;
+  overflow: auto;
+}
+
+pre {
+  margin: 0;
+}

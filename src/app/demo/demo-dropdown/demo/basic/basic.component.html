@@ -1,14 +1,31 @@
-<div example>
+<div class="nm-btn-pane-left" example>
   <nm-dropdown>
     <button nm-btn surface="secondary" nm-dropdown-toggle>
       <i class="nm-icon nm-icon-caret-down"></i>
-      Button dropdown
+      Select an action
     </button>
     <ul nm-menu style="width: 100%;">
-      <li nm-menu-item>Option 1</li>
-      <li nm-menu-item>Option 2</li>
-      <li nm-menu-divider></li>
-      <li nm-menu-item>Option 3</li>
+        <li nm-menu-item>
+          <i class="nm-icon nm-icon-edit"></i>Action 1
+        </li>
+        <li nm-menu-item>
+          <i class="nm-icon nm-icon-share"></i>Action 2
+        </li>
+        <li nm-menu-divider></li>
+        <li nm-menu-item>
+          <i class="nm-icon nm-icon-refresh"></i>Action 3
+        </li>
+    </ul>
+  </nm-dropdown>
+  <nm-dropdown>
+    <button nm-btn surface="link" nm-dropdown-toggle>
+      <i class="nm-icon nm-icon-caret-down"></i>
+      <i class="nm-icon nm-icon-server"></i>Select an endpoint
+    </button>
+    <ul nm-menu style="width: 100%;">
+      <li nm-menu-item>Endpoint 1</li>
+      <li nm-menu-item>Endpoint 2</li>
+      <li nm-menu-item>Endpoint 3</li>
     </ul>
   </nm-dropdown>
 </div>

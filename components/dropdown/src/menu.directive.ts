@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-import { NmMenuItemDirective } from './menu-item.directive';
+import { NmMenuItemComponent } from './menu-item.component';
 
 @Directive({
   selector: '[nm-menu]'
@@ -16,24 +16,44 @@ import { NmMenuItemDirective } from './menu-item.directive';
 export class NmMenuDirective implements OnInit, OnChanges {
   private mouseenter = new Subject<MouseEvent>();
   private mouseleave = new Subject<MouseEvent>();
-  private click = new Subject<NmMenuItemDirective>();
+  private click = new Subject<NmMenuItemComponent>();
+  private arrowup = new Subject<KeyboardEvent>();
+  private arrowdown = new Subject<KeyboardEvent>();
 
   mouseenter$: Observable<MouseEvent> = this.mouseenter.asObservable();
   mouseleave$: Observable<MouseEvent> = this.mouseleave.asObservable();
-  click$: Observable<NmMenuItemDirective> = this.click.asObservable();
+  click$: Observable<NmMenuItemComponent> = this.click.asObservable();
+  arrowup$: Observable<KeyboardEvent> = this.arrowup.asObservable();
+  arrowdown$: Observable<KeyboardEvent> = this.arrowdown.asObservable();
 
   private classes: { [name: string]: boolean } = {};
+  private currentActiveItemIndex = -1;
 
-  readonly items: NmMenuItemDirective[] = [];
+  readonly items: NmMenuItemComponent[] = [];
 
   constructor(private elem: ElementRef, private renderer: Renderer2) {
   }
 
-  addItem(item: NmMenuItemDirective) {
+  activateItem(seed: number) {
+    this.inactivateAllItems();
+    this.currentActiveItemIndex = this.currentActiveItemIndex + seed + this.items.length;
+    this.currentActiveItemIndex = this.currentActiveItemIndex % this.items.length;
+    this.items[this.currentActiveItemIndex].activate();
+  }
+
+  inactivateAllItems() {
+    this.items.forEach(item => item.inactivate());
+  }
+
+  resetCurrentActiveItemIndex() {
+    this.currentActiveItemIndex = -1;
+  }
+
+  addItem(item: NmMenuItemComponent) {
     this.items.push(item);
   }
 
-  onClickItem(item: NmMenuItemDirective) {
+  onClickItem(item: NmMenuItemComponent) {
     this.click.next(item);
   }
 
@@ -45,6 +65,16 @@ export class NmMenuDirective implements OnInit, OnChanges {
   @HostListener('mouseleave', ['$event'])
   onMouseLeave(e: MouseEvent): void {
     this.mouseleave.next(e);
+  }
+
+  @HostListener('keydown.arrowup', ['$event'])
+  onKeydownArrowUp(e: KeyboardEvent): void {
+    this.arrowup.next(e);
+  }
+
+  @HostListener('keydown.arrowdown', ['$event'])
+  onKeydownArrowDown(e: KeyboardEvent): void {
+    this.arrowdown.next(e);
   }
 
   ngOnInit() {

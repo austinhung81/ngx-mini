@@ -15,16 +15,28 @@ export class NmDropdownToggleDirective implements OnInit, OnChanges {
   private mouseenter = new Subject<MouseEvent>();
   private mouseleave = new Subject<MouseEvent>();
   private click = new Subject<MouseEvent>();
-  private active = new Subject<KeyboardEvent>();
+  private escape = new Subject<KeyboardEvent>();
+  private arrowup = new Subject<KeyboardEvent>();
+  private arrowdown = new Subject<KeyboardEvent>();
 
   mouseenter$: Observable<MouseEvent> = this.mouseenter.asObservable();
   mouseleave$: Observable<MouseEvent> = this.mouseleave.asObservable();
   click$: Observable<MouseEvent> = this.click.asObservable();
-  active$: Observable<KeyboardEvent> = this.active.asObservable();
+  escape$: Observable<KeyboardEvent> = this.escape.asObservable();
+  arrowup$: Observable<KeyboardEvent> = this.arrowup.asObservable();
+  arrowdown$: Observable<KeyboardEvent> = this.arrowdown.asObservable();
 
   private classes: { [name: string]: boolean } = {};
 
   constructor(private elem: ElementRef, private renderer: Renderer2) {
+  }
+
+  disable (disabled: boolean) {
+    if (disabled) {
+      this.renderer.setAttribute(this.elem.nativeElement, 'disabled', 'disabled');
+    } else {
+      this.renderer.removeAttribute(this.elem.nativeElement, 'disabled');
+    }
   }
 
   ngOnInit() {
@@ -52,15 +64,24 @@ export class NmDropdownToggleDirective implements OnInit, OnChanges {
     this.click.next(e);
   }
 
-  @HostListener('keyup.enter', ['$event'])
-  @HostListener('keyup.space', ['$event'])
-  onActive(e: KeyboardEvent): void {
-    this.active.next(e);
+  @HostListener('keyup.esc', ['$event'])
+  onKeyupEsc(e: KeyboardEvent): void {
+    this.escape.next(e);
+  }
+
+  @HostListener('keydown.arrowup', ['$event'])
+  onKeydownArrowUp(e: KeyboardEvent): void {
+    this.arrowup.next(e);
+  }
+
+  @HostListener('keydown.arrowdown', ['$event'])
+  onKeydownArrowDown(e: KeyboardEvent): void {
+    this.arrowdown.next(e);
   }
 
   private setCurrentClasses(): void {
     this.classes = {
-      'nm-dropdonw-toggle': true
+      'nm-dropdown-toggle': true
     };
   }
 

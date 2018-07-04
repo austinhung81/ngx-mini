@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NmDropdownComponent } from './dropdown.component';
 import { NmDropdownToggleDirective } from './dropdown-toggle.directive';
 import { NmMenuDirective } from './menu.directive';
-import { NmMenuItemDirective } from './menu-item.directive';
+import { NmMenuItemComponent } from './menu-item.component';
 import { NmMenuDividerDirective } from './menu-divider.directive';
 import { DropdownConfig } from './dropdown.config';
 
@@ -14,14 +14,14 @@ import { DropdownConfig } from './dropdown.config';
     NmDropdownComponent,
     NmDropdownToggleDirective,
     NmMenuDirective,
-    NmMenuItemDirective,
+    NmMenuItemComponent,
     NmMenuDividerDirective
   ],
   exports: [
     NmDropdownComponent,
     NmDropdownToggleDirective,
     NmMenuDirective,
-    NmMenuItemDirective,
+    NmMenuItemComponent,
     NmMenuDividerDirective
   ],
   entryComponents: []
