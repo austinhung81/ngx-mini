@@ -19,12 +19,14 @@ export class NmMenuDirective implements OnInit, OnChanges {
   private click = new Subject<NmMenuItemComponent>();
   private arrowup = new Subject<KeyboardEvent>();
   private arrowdown = new Subject<KeyboardEvent>();
+  private escape = new Subject<KeyboardEvent>();
 
   mouseenter$: Observable<MouseEvent> = this.mouseenter.asObservable();
   mouseleave$: Observable<MouseEvent> = this.mouseleave.asObservable();
   click$: Observable<NmMenuItemComponent> = this.click.asObservable();
   arrowup$: Observable<KeyboardEvent> = this.arrowup.asObservable();
   arrowdown$: Observable<KeyboardEvent> = this.arrowdown.asObservable();
+  escape$: Observable<KeyboardEvent> = this.escape.asObservable();
 
   private classes: { [name: string]: boolean } = {};
   private currentActiveItemIndex = -1;
@@ -75,6 +77,11 @@ export class NmMenuDirective implements OnInit, OnChanges {
   @HostListener('keydown.arrowdown', ['$event'])
   onKeydownArrowDown(e: KeyboardEvent): void {
     this.arrowdown.next(e);
+  }
+
+  @HostListener('keyup.esc', ['$event'])
+  onKeyupEsc(e: KeyboardEvent): void {
+    this.escape.next(e);
   }
 
   ngOnInit() {

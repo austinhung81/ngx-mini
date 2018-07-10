@@ -1,4 +1,4 @@
-@keyframes #{$prefix}-navbar-brand-right {
+@keyframes #{$navbar}-brand-right {
   from {
     margin-left: -73px;
   }
@@ -6,7 +6,7 @@
     margin-left: 0px;
   }
 }
-@keyframes #{$prefix}-navbar-brand-left {
+@keyframes #{$navbar}-brand-left {
   from {
     margin-left: 0px;
   }
@@ -122,13 +122,12 @@
   margin-left: 4px;
 }
 
-.#{$prefix}-navbar-brand,
-[#{$prefix}-navbar-brand] {
+#{$navbar}-brand {
   border-right: 1px solid #c22327;
   float: left;
   padding: 8px 24px;
   animation-duration: 200ms;
-  animation-name: #{$prefix}-navbar-brand-left;
+  animation-name: #{$navbar}-brand-left;
   animation-fill-mode: forwards;
 
   &,
@@ -139,7 +138,7 @@
 
   .ant-affix & {
     animation-duration: 550ms;
-    animation-name: #{$prefix}-navbar-brand-right;
+    animation-name: #{$navbar}-brand-right;
     animation-fill-mode: forwards;
   }
 }

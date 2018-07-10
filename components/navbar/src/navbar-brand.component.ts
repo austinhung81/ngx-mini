@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: '[mini-navbar-brand],.mini-navbar-brand',
-  template: '<ng-content></ng-content>'
+  selector: '[nm-navbar-brand]',
+  template: '<ng-content></ng-content>',
+  host: {
+    'nm-navbar-brand': 'true'
+  }
 })
 export class MiniNavbarBrandComponent {
 

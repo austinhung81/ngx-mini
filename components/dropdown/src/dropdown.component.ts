@@ -21,13 +21,14 @@ import { NmDropdownToggleDirective } from './dropdown-toggle.directive';
 import { NmMenuDirective } from '@ngx-mini/menu';
 
 @Component({
-  selector: 'nm-dropdown',
+  selector: 'nm-dropdown,[nm-dropdown]',
   templateUrl: './dropdown.component.html'
 })
 export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterContentInit {
   /** specifies event that should trigger */
   @Input() trigger = 'click';
 
+  // TODO
   /** placement of pop menu
    * Provides one of supported placements: `bottom-left`, `bottom-right`
    */
@@ -89,7 +90,10 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
         this.toggle.escape$.pipe(mapTo(false))
       );
 
-      menu$ = this.menu.click$.pipe(map(_ => !this.closeOnClick));
+      menu$ = merge(
+        this.menu.click$.pipe(map(_ => !this.closeOnClick)),
+        this.menu.escape$.pipe(mapTo(false))
+      )
     }
 
     if (this.trigger === 'hover') {
@@ -102,7 +106,8 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
       menu$ = merge(
         this.menu.mouseenter$.pipe(mapTo(true)),
         this.menu.mouseleave$.pipe(mapTo(false)),
-        this.menu.click$.pipe(map(_ => !this.closeOnClick))
+        this.menu.click$.pipe(map(_ => !this.closeOnClick)),
+        this.menu.escape$.pipe(mapTo(false))
       );
     }
 
