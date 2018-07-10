@@ -31,7 +31,7 @@ export class NmDropdownToggleDirective implements OnInit, OnChanges {
   constructor(private elem: ElementRef, private renderer: Renderer2) {
   }
 
-  disable (disabled: boolean) {
+  disable(disabled: boolean) {
     if (disabled) {
       this.renderer.setAttribute(this.elem.nativeElement, 'disabled', 'disabled');
     } else {

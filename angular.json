@@ -165,6 +165,25 @@
         }
       }
     },
+    "@ngx-mini/menu": {
+      "root": "components/menu",
+      "sourceRoot": "components/menu/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "project": "components/menu/ng-package.json",
+            "tsConfig": "components/tsconfig.lib.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "components/menu/ng-package.prod.json"
+            }
+          }
+        }
+      }
+    },
     "@ngx-mini/dropdown": {
       "root": "components/dropdown",
       "sourceRoot": "components/dropdown/src",

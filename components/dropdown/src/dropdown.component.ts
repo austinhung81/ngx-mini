@@ -18,7 +18,7 @@ import { map, mapTo, takeUntil, debounceTime, filter, tap } from 'rxjs/operators
 
 import { DropdownConfig } from './dropdown.config';
 import { NmDropdownToggleDirective } from './dropdown-toggle.directive';
-import { NmMenuDirective } from './menu.directive';
+import { NmMenuDirective } from '@ngx-mini/menu';
 
 @Component({
   selector: 'nm-dropdown',

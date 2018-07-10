@@ -9,7 +9,6 @@ import {
   Renderer2,
   ViewChild
 } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 
 import { NmMenuDirective } from './menu.directive';
 

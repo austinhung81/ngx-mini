@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NmButtonModule } from '@ngx-mini/button';
+import { NmMenuModule } from '@ngx-mini/menu';
 import { NmDropdownModule } from '@ngx-mini/dropdown';
 
 import { routes } from './demo-dropdown.routes';
@@ -19,6 +20,7 @@ import { demos } from './demo';
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     NmButtonModule.forRoot(),
+    NmMenuModule.forRoot(),
     NmDropdownModule.forRoot(),
     DocsModule
   ],
