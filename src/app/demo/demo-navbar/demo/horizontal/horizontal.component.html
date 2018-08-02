@@ -3,19 +3,19 @@
     <app-header title="NGX-MINI"></app-header>
     <nz-affix [nzTarget]="container">
       <div class="example">
-        <mini-navbar>
-          <a nm-navbar-brand href="#">
+        <nm-navbar>
+          <a class="nm-navbar-brand" href="#">
             <span class="icon-tball-white"></span>
           </a>
           <ul class="nav navbar-nav">
             <li>
-              <a href="#">Link 1</a>
+              <a href="#">Menu 1</a>
             </li>
             <li>
-              <a href="#">Link 2</a>
+              <a href="#">Menu 2</a>
             </li>
             <li nm-dropdown trigger="hover">
-              <a href="#" nm-dropdown-toggle>Group 1</a>
+              <a href="#" nm-dropdown-toggle>Menu 3</a>
               <ul nm-menu>
                 <li nm-menu-item>Menu item one</li>
                 <li nm-menu-item>
@@ -30,7 +30,7 @@
               </ul>
             </li>
           </ul>
-        </mini-navbar>
+        </nm-navbar>
       </div>
     </nz-affix>
   </div>

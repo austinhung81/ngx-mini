@@ -7,7 +7,7 @@ import { NzAffixModule } from 'ng-zorro-antd';
 
 import { NmMenuModule } from '@ngx-mini/menu';
 import { NmDropdownModule } from '@ngx-mini/dropdown';
-import { MiniNavbarModule } from '@ngx-mini/navbar';
+import { NmNavbarModule } from '@ngx-mini/navbar';
 
 import { routes } from './demo-navbar.routes';
 
@@ -23,7 +23,7 @@ import { demos } from './demo';
     RouterModule.forChild(routes),
     NmMenuModule.forRoot(),
     NmDropdownModule.forRoot(),
-    MiniNavbarModule.forRoot(),
+    NmNavbarModule.forRoot(),
     DocsModule,
     NzAffixModule
   ],
