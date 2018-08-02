@@ -37,14 +37,14 @@ export class NmMenuDirective implements OnInit, OnChanges {
   }
 
   activateItem(seed: number) {
-    this.inactivateAllItems();
+    this.deactivateAllItems();
     this.currentActiveItemIndex = this.currentActiveItemIndex + seed + this.items.length;
     this.currentActiveItemIndex = this.currentActiveItemIndex % this.items.length;
     this.items[this.currentActiveItemIndex].activate();
   }
 
-  inactivateAllItems() {
-    this.items.forEach(item => item.inactivate());
+  deactivateAllItems() {
+    this.items.forEach(item => item.deactivate());
   }
 
   resetCurrentActiveItemIndex() {

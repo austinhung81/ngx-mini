@@ -36,7 +36,7 @@ export class NmMenuItemComponent implements OnInit, OnChanges {
     this.link.nativeElement.focus();
   }
 
-  inactivate() {
+  deactivate() {
     this.active = false;
     this.setCurrentClasses();
     this.applyCurrentClasses();
