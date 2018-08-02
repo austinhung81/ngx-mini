@@ -7,7 +7,6 @@ import { NmMenuModule } from '@ngx-mini/menu';
 import { NmNavbarComponent } from './navbar.component';
 import { NavbarConfig } from './navbar.config';
 import { NmNavbarItemComponent } from './navbar-item.component';
-import { NmNavbarBrandComponent } from './navbar-brand.component';
 
 @NgModule({
   imports: [
@@ -17,13 +16,11 @@ import { NmNavbarBrandComponent } from './navbar-brand.component';
   ],
   declarations: [
     NmNavbarComponent,
-    NmNavbarItemComponent,
-    NmNavbarBrandComponent
+    NmNavbarItemComponent
   ],
   exports: [
     NmNavbarComponent,
-    NmNavbarItemComponent,
-    NmNavbarBrandComponent
+    NmNavbarItemComponent
   ],
   entryComponents: []
 })
