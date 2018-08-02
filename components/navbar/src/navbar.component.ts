@@ -3,10 +3,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Mode } from './navbar.config';
 
 @Component({
-  selector: 'mini-navbar',
+  selector: 'nm-navbar',
   templateUrl: './navbar.component.html'
 })
-export class MiniNavbarComponent {
+export class NmNavbarComponent {
   @Input() mode: Mode = 'horizontal';
   @Output() clickItem = new EventEmitter<any>();
 

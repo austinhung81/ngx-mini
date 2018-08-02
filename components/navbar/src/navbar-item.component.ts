@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: '[mini-navbar-item]',
   templateUrl: './navbar-item.component.html'
 })
-export class MiniNavbarItemComponent implements OnInit {
+export class NmNavbarItemComponent implements OnInit {
   @Input() disabled: boolean = false;
 
   constructor() { }

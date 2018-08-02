@@ -4,10 +4,10 @@ import { OverlayModule } from '@angular/cdk/overlay';
 
 import { NmMenuModule } from '@ngx-mini/menu';
 
-import { MiniNavbarComponent } from './navbar.component';
+import { NmNavbarComponent } from './navbar.component';
 import { NavbarConfig } from './navbar.config';
-import { MiniNavbarItemComponent } from './navbar-item.component';
-import { MiniNavbarBrandComponent } from './navbar-brand.component';
+import { NmNavbarItemComponent } from './navbar-item.component';
+import { NmNavbarBrandComponent } from './navbar-brand.component';
 
 @NgModule({
   imports: [
@@ -16,22 +16,19 @@ import { MiniNavbarBrandComponent } from './navbar-brand.component';
     NmMenuModule.forRoot()
   ],
   declarations: [
-    MiniNavbarComponent,
-    MiniNavbarItemComponent,
-    MiniNavbarBrandComponent
+    NmNavbarComponent,
+    NmNavbarItemComponent,
+    NmNavbarBrandComponent
   ],
   exports: [
-    MiniNavbarComponent,
-    MiniNavbarItemComponent,
-    MiniNavbarBrandComponent
+    NmNavbarComponent,
+    NmNavbarItemComponent,
+    NmNavbarBrandComponent
   ],
-  entryComponents: [
-    MiniNavbarComponent,
-    MiniNavbarItemComponent
-  ]
+  entryComponents: []
 })
-export class MiniNavbarModule {
+export class NmNavbarModule {
   static forRoot(): ModuleWithProviders {
-    return { ngModule: MiniNavbarModule, providers: [NavbarConfig] };
+    return { ngModule: NmNavbarModule, providers: [NavbarConfig] };
   }
 }

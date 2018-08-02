@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
     'nm-navbar-brand': 'true'
   }
 })
-export class MiniNavbarBrandComponent {
-
+export class NmNavbarBrandComponent {
   constructor() { }
 }
