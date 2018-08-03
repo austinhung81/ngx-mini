@@ -1,0 +1,33 @@
+//# Nav
+
+#{$nav} {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    position: relative;
+    display: block;
+
+    > a {
+      position: relative;
+      display: block;
+      padding: 10px 24px;
+      text-decoration: none;
+      line-height: 20px;
+
+      &:hover {
+        background-color: #f4f4f4;
+      }
+
+      &:focus,
+      &:active {
+        background-color: #eeeeee;
+      }
+
+      .caret {
+        margin-left: 4px;
+      }
+    }
+  }
+}

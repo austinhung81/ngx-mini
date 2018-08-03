@@ -2,31 +2,42 @@
   <div style="height: 400px;">
     <app-header title="NGX-MINI"></app-header>
     <nz-affix [nzTarget]="container">
-      <div class="example">
+      <div example>
         <nm-navbar>
-          <a class="nm-navbar-brand" href="#">
+          <a class="nm-navbar-logo" href="#">
             <span class="icon-tball-white"></span>
           </a>
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="#">Menu 1</a>
-            </li>
-            <li>
-              <a href="#">Menu 2</a>
-            </li>
+          <ul class="nm-nav nm-navbar-nav">
+            <li><a href="#">Menu 1</a></li>
+            <li class="active"><a href="#">Menu 2</a></li>
+            <li class="disabled"><a href="#">Menu 3</a></li>
             <li nm-dropdown trigger="hover">
-              <a href="#" nm-dropdown-toggle>Menu 3</a>
+              <a href="#" nm-dropdown-toggle>
+                <i class="nm-icon nm-icon-caret-down"></i>
+                Menu 4
+              </a>
               <ul nm-menu>
-                <li nm-menu-item>Menu item one</li>
+                <li nm-menu-item [active]="true">Menu item 1</li>
+                <li nm-menu-item>Menu item 2</li>
                 <li nm-menu-item>
-                  Menu item two
+                  Menu item 3
                   <ul class="dropdown-menu">
-                    <li><a href="#">Second level item one</a></li>
-                    <li><a href="#">Second level item two</a></li>
-                    <li><a href="#">Second level item three</a></li>
+                    <li><a href="#">Second level item 1</a></li>
+                    <li><a href="#">Second level item 2</a></li>
+                    <li><a href="#">Second level item 3</a></li>
                   </ul>
                 </li>
-                <li nm-menu-item>Menu item three</li>
+              </ul>
+            </li>
+            <li nm-dropdown trigger="hover" [disabled]="true">
+              <a href="#" nm-dropdown-toggle>
+                <i class="nm-icon nm-icon-caret-down"></i>
+                Menu 5
+              </a>
+              <ul nm-menu>
+                <li nm-menu-item>Menu item 1</li>
+                <li nm-menu-item>Menu item 2</li>
+                <li nm-menu-item>Menu item 2</li>
               </ul>
             </li>
           </ul>
