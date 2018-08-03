@@ -1,55 +1,5 @@
 /* Add application styles & imports to this file! */
 
-@import url(https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.css);
-@import "~components/styles/index";
-
-app-root > app-header > .app-header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 1000;
-}
-
-.app-header {
-  background-color: $bg-1st;
-  border-bottom: 1px solid $border-2nd;
-  height: 64px;
-}
-
-.app-heading {
-  display: inline-block;
-  color: $color-1st;
-  font-size: 26px;
-  line-height: 26px;
-  margin: 0;
-  padding: 19px 12px;
-}
-
-.app-main {
-  padding: 20px;
-  min-height: calc(100vh - 64px - 100px);
-  margin-top: 64px;
-}
-
-docs-demo > app-main > .app-main {
-  margin-left: 240px;
-}
-
-.app-sidenav {
-  width: 240px;
-  border-right: 1px solid #ccc;
-  padding: 20px;
-  position: fixed;
-  top: 64px;
-  bottom: 0;
-  left: 0;
-}
-
-.sidenav-menu {
-  overflow: auto;
-}
-
 .nav-pills-vertical-basic {
   display: block;
 }
