@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { PrismModule } from '@ngx-prism/core';
 import { NzAnchorModule, NzAffixModule } from 'ng-zorro-antd';
 
 import { AppHeaderComponent } from '../common/app-header/app-header.component';
@@ -17,6 +18,7 @@ import { ComponentExamplesComponent } from './component-examples/component-examp
     CommonModule,
     RouterModule,
     FormsModule,
+    PrismModule,
     NzAnchorModule,
     NzAffixModule
   ],
