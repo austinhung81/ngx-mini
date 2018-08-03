@@ -47,7 +47,7 @@ export const routes: Routes = [
   {
     path: 'navbar',
     data: {
-      name: 'Navigation Bar',
+      name: 'Navbar',
       keywords: [
         'navigation',
         'navbar'

@@ -11,7 +11,7 @@ import { DemoNavbarHorizontalComponent } from './demo/horizontal/horizontal.comp
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DemoNavbarComponent {
-  public name = 'Navigation Bar';
+  public name = 'Navbar';
   public sections: DocsSection[] = [
     {
       title: 'Examples',
