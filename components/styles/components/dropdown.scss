@@ -72,6 +72,35 @@
   }
 }
 
+//## Contains Menu
+
+#{$dropdown}-open > #{$menu},
+#{$submenu}-open > #{$menu} {
+  display: block;
+}
+
+//## Submenu
+
+#{$submenu} {
+  position: relative;
+
+  > #{$dropdown}-toggle:before {
+    @extend %icon;
+    content: "\e90a";
+    float: right;
+    margin-right: -20px;
+  }
+
+  &.disabled > #{$dropdown}-toggle:before {
+    color: #aaa;
+  }
+
+  > #{$menu} {
+    top: 0;
+    left: 100%;
+  }
+}
+
 ///////////////////////////////////////////
 
 .dropup {

@@ -43,7 +43,7 @@
 
 #{$menu}-item.disabled > a {
   @include plain-hover-focus {
-    color: #bbbbbb;
+    color: #aaa;
   }
 
   @include hover-focus {
@@ -59,8 +59,4 @@
   line-height: 0;
   margin: 8px 0;
   overflow: hidden;
-}
-
-#{$dropdown}-open > #{$menu} {
-  display: block;
 }
