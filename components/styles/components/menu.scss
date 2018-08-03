@@ -36,7 +36,7 @@
     background-color: #eeeeee;
   }
 
-  > #{$icon} {
+  > #{$icon}:first-child {
     @extend %gap-right-md;
   }
 }

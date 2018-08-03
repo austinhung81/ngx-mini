@@ -13,7 +13,7 @@
     margin-left: 2px;
   }
 
-  #{$icon}:not(#{$icon}-caret-down):not(#{$icon}-caret-up) {
+  #{$icon}:not([class*="-caret-"]) {
     @extend %gap-right-md;
   }
 }
