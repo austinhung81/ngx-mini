@@ -52,9 +52,9 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
   @ContentChild(NmDropdownToggleDirective) toggle: NmDropdownToggleDirective;
   @ContentChild(NmMenuDirective) menu: NmMenuDirective;
 
-  private classes: { [name: string]: boolean } = {};
-  private open$ = new Subject<boolean>();
-  private unsubscribe$ = new Subject<void>();
+  protected classes: { [name: string]: boolean } = {};
+  protected open$ = new Subject<boolean>();
+  protected unsubscribe$ = new Subject<void>();
 
   constructor(private elem: ElementRef, private renderer: Renderer2, config: DropdownConfig) {
     Object.assign(this, config);
@@ -163,11 +163,11 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
     this.unsubscribe$.complete();
   }
 
-  private applyToggleDisabledAttr() {
+  protected applyToggleDisabledAttr() {
     this.toggle.disable(this.disabled);
   }
 
-  private setCurrentClasses(): void {
+  protected setCurrentClasses(): void {
     this.classes = {
       'nm-dropdown': true,
       'nm-dropdown-open': this.open,
@@ -175,7 +175,7 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
     };
   }
 
-  private applyCurrentClasses(): void {
+  protected applyCurrentClasses(): void {
     for (let [name, value] of Object.entries(this.classes)) {
       value && this.renderer.addClass(this.elem.nativeElement, name);
       !value && this.renderer.removeClass(this.elem.nativeElement, name);
