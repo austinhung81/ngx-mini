@@ -18,13 +18,20 @@
               </a>
               <ul nm-menu>
                 <li nm-menu-item [active]="true">Menu item 1</li>
-                <li nm-menu-item>Menu item 2</li>
-                <li nm-menu-item>
+                <li nm-submenu>
+                  Menu item 2
+                  <ul nm-menu>
+                    <li nm-menu-item>Second level item 1</li>
+                    <li nm-menu-item>Second level item 2</li>
+                    <li nm-menu-item>Second level item 3</li>
+                  </ul>
+                </li>
+                <li nm-submenu [disabled]="true">
                   Menu item 3
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Second level item 1</a></li>
-                    <li><a href="#">Second level item 2</a></li>
-                    <li><a href="#">Second level item 3</a></li>
+                  <ul nm-menu>
+                    <li nm-menu-item>Second level item 1</li>
+                    <li nm-menu-item>Second level item 2</li>
+                    <li nm-menu-item>Second level item 3</li>
                   </ul>
                 </li>
               </ul>
