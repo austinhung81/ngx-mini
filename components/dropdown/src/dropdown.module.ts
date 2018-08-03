@@ -5,6 +5,7 @@ import { NmMenuModule } from '@ngx-mini/menu';
 
 import { NmDropdownComponent } from './dropdown.component';
 import { NmDropdownToggleDirective } from './dropdown-toggle.directive';
+import { NmSubmenuComponent } from './submenu.component';
 import { DropdownConfig } from './dropdown.config';
 
 @NgModule({
@@ -14,11 +15,13 @@ import { DropdownConfig } from './dropdown.config';
   ],
   declarations: [
     NmDropdownComponent,
-    NmDropdownToggleDirective
+    NmDropdownToggleDirective,
+    NmSubmenuComponent
   ],
   exports: [
     NmDropdownComponent,
-    NmDropdownToggleDirective
+    NmDropdownToggleDirective,
+    NmSubmenuComponent
   ],
   entryComponents: []
 })
