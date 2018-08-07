@@ -23,9 +23,9 @@ export class NmMenuItemComponent implements OnInit, OnChanges {
 
   @ViewChild('link') link: ElementRef;
 
-  private classes: { [name: string]: boolean } = {};
+  protected classes: { [name: string]: boolean } = {};
 
-  constructor(private elem: ElementRef, private renderer: Renderer2, @Host() private menu: NmMenuDirective) {
+  constructor(protected elem: ElementRef, protected renderer: Renderer2, @Host() protected menu: NmMenuDirective) {
     this.menu.addItem(this);
   }
 
@@ -64,7 +64,7 @@ export class NmMenuItemComponent implements OnInit, OnChanges {
     this.applyCurrentClasses();
   }
 
-  private setCurrentClasses(): void {
+  protected setCurrentClasses(): void {
     this.classes = {
       'nm-menu-item': true,
       'active': this.active,
@@ -73,7 +73,7 @@ export class NmMenuItemComponent implements OnInit, OnChanges {
     };
   }
 
-  private applyCurrentClasses(): void {
+  protected applyCurrentClasses(): void {
     for (let [name, value] of Object.entries(this.classes)) {
       value && this.renderer.addClass(this.elem.nativeElement, name);
       !value && this.renderer.removeClass(this.elem.nativeElement, name);
