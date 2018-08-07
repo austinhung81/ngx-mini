@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import format from 'html-format';
 
 @Injectable()
 export class HtmlParser {
@@ -10,14 +11,14 @@ export class HtmlParser {
     this.node.innerHTML = content;
   }
 
-  static trim(html: string):string {
-    return html.trim().replace(/^\s\s/gm, '').replace(/\s*$/gm, '').replace(/=""/g, '');
+  static trim(html: string): string {
+    return format(html).trim().replace(/=""/g, '');
   }
 
   extract(select: string, self: boolean): string {
     const target = this.node.querySelector(select);
     if (!target) {
-      return ''; 
+      return '';
     }
     if (self) {
       /^\./.test(select) && target.classList.remove(select.slice(1));
