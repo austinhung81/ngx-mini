@@ -40,6 +40,9 @@ export class NmMenuDirective implements OnInit, OnChanges {
     this.deactivateAllItems();
     this.currentActiveItemIndex = this.currentActiveItemIndex + seed + this.items.length;
     this.currentActiveItemIndex = this.currentActiveItemIndex % this.items.length;
+    if (this.items[this.currentActiveItemIndex].disabled) {
+      return this.activateItem(seed);
+    }
     this.items[this.currentActiveItemIndex].activate();
   }
 
