@@ -1,9 +1,12 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { DocsSection } from '../../docs/models/docs-section';
+import { HtmlParser } from '../../docs/models/html-parser';
 import { ComponentExamplesComponent } from '../../docs/component-examples/component-examples.component';
 
 import { DemoNavbarHorizontalComponent } from './demo/horizontal/horizontal.component';
+
+import demoHorizontalHtml from './demo/horizontal/horizontal.component.html';
 
 @Component({
   selector: 'demo-navbar',
@@ -19,9 +22,12 @@ export class DemoNavbarComponent {
       outlet: ComponentExamplesComponent,
       content: [
         {
-          title: 'Horizontal Navigation Bar',
+          title: 'Horizontal',
           anchor: 'horizontal',
-          outlet: DemoNavbarHorizontalComponent
+          outlet: DemoNavbarHorizontalComponent,
+          source: {
+            html: new HtmlParser(demoHorizontalHtml).extract('[example]', false)
+          }
         }
       ]
     }
