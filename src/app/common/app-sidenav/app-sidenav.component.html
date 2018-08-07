@@ -1,6 +1,6 @@
 <nav class="app-sidenav" role="nav">
   <div class="sidenav-menu">
-    <ul class="nav nav-pills nav-pills-vertical-basic">
+    <ul class="nm-nav nav-pills nav-pills-vertical-basic">
       <li routerLinkActive="active">
         <a routerLink="/getting-started" role="tab">Getting started</a>
       </li>
@@ -17,7 +17,7 @@
         />
       </div>
     </form>
-    <ul class="nav nav-pills nav-pills-vertical-basic">
+    <ul class="nm-nav nav-pills nav-pills-vertical-basic">
       <li *ngFor="let nav of navs" routerLinkActive="active">
         <a [routerLink]="['/', nav.path]" role="tab">{{ nav.name }}</a>
       </li>
