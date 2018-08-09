@@ -119,7 +119,7 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
   }
 
   onArrowsKeyup = (seed: number) => {
-    this.menu.activateItem(seed);
+    this.menu.focusin(seed);
   }
 
   onOpenChange = (open: boolean) => {
@@ -130,7 +130,7 @@ export class NmDropdownComponent implements OnInit, OnDestroy, OnChanges, AfterC
   }
 
   onOpen = () => {
-    this.menu.resetCurrentActiveItemIndex();
+    this.menu.resetCurrentFocusItemIndex();
   }
 
   @HostListener('document:click', ['$event'])
