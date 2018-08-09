@@ -21,6 +21,7 @@ export class NmMenuItemComponent implements OnInit, OnChanges {
   @Input() active: boolean;
   @Input() selected: boolean;
   @Input() disabled: boolean;
+  @Input() value: any;
 
   @ViewChild('link') link: ElementRef;
 
