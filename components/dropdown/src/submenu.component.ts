@@ -79,6 +79,7 @@ export class NmSubmenuComponent extends NmMenuItemComponent implements AfterCont
       'nm-submenu': true,
       'nm-submenu-open': this.open,
       'active': this.active,
+      'focus': this.focus,
       'disabled': this.disabled
     };
   }
