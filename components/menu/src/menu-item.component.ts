@@ -17,6 +17,7 @@ import { NmMenuDirective } from './menu.directive';
   templateUrl: './menu-item.component.html'
 })
 export class NmMenuItemComponent implements OnInit, OnChanges {
+  @Input() focus: boolean;
   @Input() active: boolean;
   @Input() selected: boolean;
   @Input() disabled: boolean;
@@ -29,17 +30,34 @@ export class NmMenuItemComponent implements OnInit, OnChanges {
     this.menu.addItem(this);
   }
 
+  focusin() {
+    this.focus = true;
+    this.setCurrentClasses();
+    this.applyCurrentClasses();
+    this.link.nativeElement.focus();
+  }
+
+  focusout() {
+    this.focus = false;
+    this.setCurrentClasses();
+    this.applyCurrentClasses();
+    this.link.nativeElement.blur();
+  }
+
   activate() {
     this.active = true;
     this.setCurrentClasses();
     this.applyCurrentClasses();
-    this.link.nativeElement.focus();
   }
 
   deactivate() {
     this.active = false;
     this.setCurrentClasses();
     this.applyCurrentClasses();
+  }
+
+  contains(node: Node):boolean {
+    return this.elem.nativeElement.contains(node);
   }
 
   @HostListener('click', ['$event'])
@@ -68,6 +86,7 @@ export class NmMenuItemComponent implements OnInit, OnChanges {
     this.classes = {
       'nm-menu-item': true,
       'active': this.active,
+      'focus': this.focus,
       'nm-menu-selected': this.selected,
       'disabled': this.disabled
     };
