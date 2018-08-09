@@ -19,6 +19,20 @@
   background-clip: padding-box;
 }
 
+%menu-item-focus {
+  text-decoration: none;
+  color: #222222;
+  background-color: #eeeeee;
+}
+
+#{$menu}-item {
+  @include hover-focus {
+    > a {
+      @extend %menu-item-focus;
+    }
+  }
+}
+
 #{$menu}-item > a {
   cursor: pointer;
   display: block;
@@ -31,9 +45,7 @@
   white-space: nowrap;
 
   @include hover-focus {
-    text-decoration: none;
-    color: #222222;
-    background-color: #eeeeee;
+    @extend %menu-item-focus;
   }
 
   > #{$icon}:first-child {
