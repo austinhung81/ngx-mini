@@ -20,6 +20,7 @@ export class NmMenuDirective implements OnInit, OnChanges {
   private arrowup = new Subject<KeyboardEvent>();
   private arrowdown = new Subject<KeyboardEvent>();
   private escape = new Subject<KeyboardEvent>();
+  private focus = new Subject<KeyboardEvent>();
 
   mouseenter$: Observable<MouseEvent> = this.mouseenter.asObservable();
   mouseleave$: Observable<MouseEvent> = this.mouseleave.asObservable();
@@ -27,13 +28,29 @@ export class NmMenuDirective implements OnInit, OnChanges {
   arrowup$: Observable<KeyboardEvent> = this.arrowup.asObservable();
   arrowdown$: Observable<KeyboardEvent> = this.arrowdown.asObservable();
   escape$: Observable<KeyboardEvent> = this.escape.asObservable();
+  focus$: Observable<KeyboardEvent> = this.focus.asObservable();
 
   private classes: { [name: string]: boolean } = {};
   private currentActiveItemIndex = -1;
+  private currentFocusItemIndex = -1;
 
   readonly items: NmMenuItemComponent[] = [];
 
   constructor(private elem: ElementRef, private renderer: Renderer2) {
+  }
+
+  focusin(seed: number) {
+    this.focusout();
+    this.currentFocusItemIndex = this.calcNextAvailableItemIndex(this.currentFocusItemIndex, seed);
+    this.items[this.currentFocusItemIndex].focusin();
+  }
+
+  focusout(index?: number) {
+    if (index) {
+      return this.items[index].focusout();
+    }
+
+    this.items.forEach(item => item.focusout());
   }
 
   activateItem(seed: number) {
@@ -48,6 +65,26 @@ export class NmMenuDirective implements OnInit, OnChanges {
 
   deactivateAllItems() {
     this.items.forEach(item => item.deactivate());
+  }
+
+  calcNextAvailableItemIndex(current: number, seed: number) {
+    const max = this.items.length - 1;
+    let next: number = current;
+    let item: NmMenuItemComponent;
+
+    do {
+      next = next + seed;
+      next = next < 0 ? max : next;
+      next = next > max ? 0 : next;
+      item = this.items[next];
+    } while (item.disabled);
+
+    return next;
+  }
+
+  resetCurrentFocusItemIndex() {
+    this.currentFocusItemIndex > -1 && this.focusout(this.currentFocusItemIndex);
+    this.currentFocusItemIndex = -1;
   }
 
   resetCurrentActiveItemIndex() {
@@ -85,6 +122,11 @@ export class NmMenuDirective implements OnInit, OnChanges {
   @HostListener('keyup.esc', ['$event'])
   onKeyupEsc(e: KeyboardEvent): void {
     this.escape.next(e);
+  }
+
+  @HostListener('focusin', ['$event'])
+  onFocus(e: FocusEvent): void {
+    this.currentFocusItemIndex = this.items.findIndex(item => item.contains(e.target as Node));
   }
 
   ngOnInit() {
